@@ -651,37 +651,48 @@ AirVisual API.</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>get_country <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="do">## Define the API URL with the provided API key for retrieving country data</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="co"># Define the API URL with the provided API key for retrieving country data</span></span>
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&#39;http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690&#39;</span></span>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  </span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="do">## Get api response and content</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="co"># Get api response and content</span></span>
 <span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
 <span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  country_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
 <span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  </span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  <span class="do">## Convert the list of countries to a data frame</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  <span class="co"># Convert the list of countries to a data frame</span></span>
 <span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">country =</span> <span class="fu">sapply</span>(country_list, <span class="st">&#39;[[&#39;</span>, <span class="st">&#39;country&#39;</span>))</span>
 <span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
 <span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><strong>Verify whether the country is included in the list of
-supported countries</strong></li>
+supported countries</strong> This function serves as a convenient
+helper, enabling users to effortlessly determine if their provided
+country name is supported by AirVisual. The function returns boolean
+(True/False) for verifing if a given country is supported by AirVisual
+API.</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>verify_country <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>){</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  </span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&#39;http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690&#39;</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  </span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  country_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  </span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  <span class="cf">for</span> (c <span class="cf">in</span> country_list) {</span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>     <span class="cf">if</span> (country <span class="sc">==</span> c) {</span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>       <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>     }</span>
-<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>  }</span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="co"># Define the API URL with the provided API key for retrieving country data</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&#39;http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690&#39;</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="co"># Get api response and content</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  country_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>  </span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>  <span class="co"># iterate through supported country list</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>  <span class="cf">for</span> (c <span class="cf">in</span> country_list) {</span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>    </span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>     <span class="co"># Return True if specified country is in the list</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>     <span class="cf">if</span> (country <span class="sc">==</span> c) {</span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>       <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>     }</span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>  }</span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a>  <span class="co"># Return False if not found</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
-<li>Get all supported states inside a specified country</li>
+<li><strong>Get all supported states inside a specified
+country</strong></li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>get_state <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>){</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  </span>

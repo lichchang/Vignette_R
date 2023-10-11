@@ -59,40 +59,49 @@ regarding API key usage at this website:
 ``` r
 get_country <- function(){
   
-  ## Define the API URL with the provided API key for retrieving country data
+  # Define the API URL with the provided API key for retrieving country data
   url <- 'http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690'
   
-  ## Get api response and content
+  # Get api response and content
   response <- GET(url)
   country_list <- content(response, encoding = "UTF-8")$data
   
-  ## Convert the list of countries to a data frame
+  # Convert the list of countries to a data frame
   results <- data.frame(country = sapply(country_list, '[[', 'country'))
   return(results)
 }
 ```
 
 - **Verify whether the country is included in the list of supported
-  countries**
+  countries** This function serves as a convenient helper, enabling
+  users to effortlessly determine if their provided country name is
+  supported by AirVisual. The function returns boolean (True/False) for
+  verifing if a given country is supported by AirVisual API.
 
 ``` r
 verify_country <- function(country="USA"){
   
+  # Define the API URL with the provided API key for retrieving country data
   url <- 'http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690'
   
+  # Get api response and content
   response <- GET(url)
   country_list <- content(response, encoding = "UTF-8")$data
   
+  # iterate through supported country list
   for (c in country_list) {
+    
+     # Return True if specified country is in the list
      if (country == c) {
        return(TRUE)
      }
   }
+  # Return False if not found
   return(FALSE)
 }
 ```
 
-- Get all supported states inside a specified country
+- **Get all supported states inside a specified country**
 
 ``` r
 get_state <- function(country="USA"){
