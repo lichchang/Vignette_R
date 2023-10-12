@@ -1,267 +1,235 @@
----
-title: "Project"
-author: "LiChia Chang"
-date: "2023-10-07"
-output: 
-  github_document:
-    toc: true
-    # html_preview: True
----
+Project2
+================
+LiChia Chang
+2023-10-07
+
+- [Introduction](#introduction)
+- [Requirements](#requirements)
+- [API Interaction Functions](#api-interaction-functions)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+
 # Introduction
-This document is a vignette to show how to retrieve data from an API. To showcase this, I will create multiple functions for refining API endpoints and design helper functions to enhance the user-friendliness of the API. In the final section, I will employ these functions to extract data that I'm interested in and conduct exploratory data analysis.
 
-This article dives into the [AirVisual API](https://www.iqair.com/commercial-air-quality-monitors/api), which collects data from the largest network of ground-based sensors worldwide, providing the most accurate and reliable air quality information. Further details will be discussed in the subsequent sections.
+This document is a vignette to show how to retrieve data from an API. To
+showcase this, I will create multiple functions for refining API
+endpoints and design helper functions to enhance the user-friendliness
+of the API. In the final section, I will employ these functions to
+extract data that I’m interested in and conduct exploratory data
+analysis.
 
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
+This article dives into the [AirVisual
+API](https://www.iqair.com/commercial-air-quality-monitors/api), which
+collects data from the largest network of ground-based sensors
+worldwide, providing the most accurate and reliable air quality
+information. Further details will be discussed in the subsequent
+sections.
 
 # Requirements
-To interact with the AirVisual API, you will requrie several libraries. In the R environment console, you can install these libraries by using the following command: `install.packages(package_name)`. Make sure to replace package_name with the name of any library from the list below that you haven't installed in your environment.
 
+To interact with the AirVisual API, you will requrie several libraries.
+In the R environment console, you can install these libraries by using
+the following command: `install.packages(package_name)`. Make sure to
+replace package_name with the name of any library from the list below
+that you haven’t installed in your environment.
 
-```{r message=FALSE}
+``` r
 library(httr)
 library(dplyr)
 library(jsonlite)
 library(ggplot2)
 ```
 
-
 # API Interaction Functions
-In this section, I will demonstrate how to establish contact with the AirVisual API and develop functions for specific purposes. I will provide separate explanations for each function, detailing their usage and intended purpose.
 
-*Note: For this project, I am utilizing my own API key, which allows for up to 10,000 calls per month. If you wish to use your own API key, simply add your key to "key=". You can find detailed information regarding API key usage at this website: [https://www.iqair.com/dashboard/api](https://www.iqair.com/dashboard/api)*
+In this section, I will demonstrate how to establish contact with the
+AirVisual API and develop functions for specific purposes. I will
+provide separate explanations for each function, detailing their usage
+and intended purpose.
 
+*Note: For this project, I am utilizing my own API key, which allows for
+up to 10,000 calls per month. If you wish to use your own API key,
+simply replace “key=” with your key. You can find detailed information
+regarding API key usage at this website:
+<https://www.iqair.com/dashboard/api>*
 
-* __Get all supported countries__
-First, this function retrieves a list of countries that are supported by the AirVisual API. 
+- **Get all supported countries**
 
-```{r}
+``` r
 get_country <- function(){
-  
-  # Define the API URL with the provided API key for retrieving country data
   url <- 'http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690'
-  
-  # Get api response and content
   response <- GET(url)
   country_list <- content(response, encoding = "UTF-8")$data
   
-  # Convert the list of countries to a data frame
+  ## Convert to data frame
   results <- data.frame(country = sapply(country_list, '[[', 'country'))
   return(results)
 }
 ```
 
+- Verify if the country exists in the supported country list
 
+Verify if the country is in the supported list
 
-* __Verify whether the country is included in the list of supported countries__
-This function serves as a convenient helper, enabling users to effortlessly determine if their provided country name is supported by AirVisual. The function returns boolean (True/False) for verifing if a given country is supported by AirVisual API.
-
-
-```{r}
+``` r
 verify_country <- function(country="USA"){
   
-  # Define the API URL with the provided API key for retrieving country data
   url <- 'http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690'
   
-  # Get api response and content
   response <- GET(url)
   country_list <- content(response, encoding = "UTF-8")$data
   
-  # iterate through supported country list
   for (c in country_list) {
-    
-     # Return True if specified country is in the list
      if (country == c) {
        return(TRUE)
      }
   }
-  # Return False if not found
   return(FALSE)
 }
 ```
 
+- Get all supported states inside a specified country
 
-* __Get all supported states inside a specified country__
-This function fetches a list of states that pertain to a particular country supported by the AirVisual API.
-
-```{r}
+``` r
 get_state <- function(country="USA"){
   
-  # Replace spaces with '%20' in the country name to format it for the URL
   custom_country <- gsub(" ", "%20", country)
   
-  # Build the URL with the formatted country name and the API key
   url <- "http://api.airvisual.com/v2/states?country="
   str_key <- "&key=b94cdf68-3b7b-4808-9012-ffb6359d7690"
   url <- paste0(url, custom_country, str_key)
   
-  # Make an HTTP GET request to the API
-  response <- GET(url)
   
-  # Extract the 'data' part of the API response
+  response <- GET(url)
   state_list <- content(response, encoding = "UTF-8")$data
   
-  # Convert the list of states to a data frame
+  ## Convert to data frame
   results <- data.frame(country = sapply(state_list, '[[', 'state'))
   return(results)
 }
 ```
 
+- Verify supported states in a country
 
-* __Verify supported states in a country__
-This function serves as a convenient helper, enabling users to determine if their provided state name is supported by AirVisual. The function returns boolean (True/False) for verifing if a given state is supported by AirVisual API. It's important to note that a valid country must be provided to verify state that belong to that specific country.
+Verify if the state is in the supported list of specific country
 
-
-```{r}
+``` r
 verify_state <- function(country="USA", state="California"){
   
-  # Replace spaces with '%20' to format it for the URL
   custom_country <- gsub(" ", "%20", country)
   
-  # Build the URL with the formatted country name and the API key
   url <- "http://api.airvisual.com/v2/states?country="
   str_key <- "&key=b94cdf68-3b7b-4808-9012-ffb6359d7690"
   url <- paste0(url, custom_country, str_key)
   
-  # Make an HTTP GET request to the API
-  response <- GET(url)
   
-  # Extract the 'data' part of the API response
+  response <- GET(url)
   state_list <- content(response, encoding = "UTF-8")$data
   
-  # iterate through supported state list
   for (s in state_list) {
-    
-    # Return True if specified state is in the list 
-    if (state == s) {
+     if (state == s) {
        return(TRUE)
      }
   }
-  
-  # Return False if not found
   return(FALSE)
 }
 ```
 
+- Get all supported cities inside a specified country and state
 
-* __Get all supported cities inside a specified country and state__
-This function extracts a collection of supported cities associated with a particular country and state.
-
-```{r}
+``` r
 get_city <- function(country="USA", state="California"){
 
-  # Replace spaces with '%20' to format it for the URL
   custom_state <- gsub(" ", "%20", state)
   custom_country <- gsub(" ", "%20", country)
   
-  # Build the URL with the formatted country name and the API key
   url <- "http://api.airvisual.com/v2/cities?state="
   str_country <- "&country="
   str_key <- "&key=b94cdf68-3b7b-4808-9012-ffb6359d7690"
   url <- paste0(url, custom_state, str_country, custom_country, str_key)
   
-  # Make an HTTP GET request to the API
+  
   response <- GET(url)
   city_list <- content(response, encoding = "UTF-8")$data
   
-  # Convert the list of cities to a data frame
+  ## Convert to data frame
   results <- data.frame(country = sapply(city_list, '[[', 'city'))
   return(results)
 }
 ```
 
+- Verify supported cities in a state
 
-* __Verify supported cities in a state__
-This function serves as a convenient helper, enabling users to determine if their provided city name is supported by AirVisual. The function returns boolean (True/False) for verifing if a given city is supported by AirVisual API. It's important to note that a valid country and state must be provided to verify city that belong to that specific country and state.
+Verify if the city is in the supported list of specific country and
+state
 
-```{r}
+``` r
 verify_city <- function(country="USA", state="California", city="Los Angeles"){
 
-  # Replace spaces with '%20' to format it for the URL
   custom_state <- gsub(" ", "%20", state)
   custom_country <- gsub(" ", "%20", country)
   
-  # Build the URL with the formatted country name and the API key
   url <- "http://api.airvisual.com/v2/cities?state="
   str_country <- "&country="
   str_key <- "&key=b94cdf68-3b7b-4808-9012-ffb6359d7690"
   url <- paste0(url, custom_state, str_country, custom_country, str_key)
   
-  # Make an HTTP GET request to the API
+  
   response <- GET(url)
   city_list <- content(response, encoding = "UTF-8")$data
   
-  # iterate through supported city list
   for (cty in city_list) {
-    
-    # Return True if specified city is in the list 
      if (city == cty) {
        return(TRUE)
      }
   }
-  # Return False if not found
   return(FALSE)
 }
 ```
 
+- Verify if the connection is sucessfully connected return status of
+  connection
 
-* __Verify if the connection is sucessfully connected__
-This function assists in testing the successful establishment of a connection. The output message will return "success" if the connection is established successfully, and it will return an error message if the connection encounters any issues.
-
-```{r}
+``` r
 test_connection <- function(country="USA", state="California", city="Los Angeles") {
   ## replace " " to "%20", which is a URL-encoded representation of a space character.
   custom_city <- gsub(" ", "%20", city)
   custom_state <- gsub(" ", "%20", state)
   custom_country <- gsub(" ", "%20", country)
   
-  # Build the URL with the formatted country name and the API key
   url <- 'http://api.airvisual.com/v2/city?city='
   str_state <- '&state='
   str_country <- '&country='
   str_key <- '&key=b94cdf68-3b7b-4808-9012-ffb6359d7690'
   url <- paste0(url, custom_city, str_state, custom_state, str_country, custom_country, str_key)
   
-  # Make an HTTP GET request to the API
+  
   response <- GET(url)
   status <- content(response)$status
-  
-  # Return connection message
   return(status)
 }
 ```
 
+- Helper function to wrap up all the validation
 
-* __Helper function to wrap up all the validation__
-This function wrap up all the helper functions mentioned earlier to provide comprehensive end-to-end verification for a specified country, state, and city.
-
-```{r}
+``` r
 wrap_validation <- function(country="USA", state="California", city="Los Angeles") {
   
-  # Execute the test_connection function to test connection
   status <- test_connection(country, state, city)
   if (status != "success") {
     msg <- "ERROR: Connection failed"
     stop(msg)
   }
   
-  # Execute the verify_country function to test country name
   if (!verify_country(country)) {
     msg <- "Not a valid country in supported list"
     stop(msg)
   }
   
-  # Execute the verify_state function to test state name
   if (!verify_state(country, state)) {
     msg <- paste0("Not a valid state in the supported list of country: ", country)
     stop(msg)
   }
   
-   # Execute the verify_city function to test city name
   if (!verify_city(country, state, city)) {
     msg <- paste0("Not a valid city in the supported list of country: ", country, " and state: ", state)
     stop(msg)
@@ -271,22 +239,10 @@ wrap_validation <- function(country="USA", state="California", city="Los Angeles
 }
 ```
 
+- Get data object Return the most recent data object by given state,
+  city, and country
 
-* __Get data object__
-This function extracts the data of interest, which will be utilized for subsequent exploratory data analysis. A detailed breakdown of the data structure is provided below:
- ** "ts": "2017-02-01T03:00:00.000Z"   //timestamp
- ** "aqius": 21,                       //AQI value based on US EPA standard
- ** "aqicn": 7,                        //AQI value based on China MEP standard
- ** "tp": 8,                           //temperature in Celsius
- ** tp_min": 6,                        //minimum temperature in Celsius
- ** "pr": 976,                         //atmospheric pressure in hPa
- ** "hu": 100,                         //humidity %
- ** "ws": 3,                           //wind speed (m/s)
- ** "wd": 313,                         //wind direction, as an angle of 360° (N=0, E=90, S=180, W=270)
- ** "ic": "10n"                        //weather icon code
-
-
-```{r}
+``` r
 get_data <- function(city="Los Angeles", state="California", country="USA"){
 
   ## replace " " to "%20", which is a URL-encoded representation of a space character.
@@ -294,25 +250,24 @@ get_data <- function(city="Los Angeles", state="California", country="USA"){
   custom_state <- gsub(" ", "%20", state)
   custom_country <- gsub(" ", "%20", country)
   
-  # Build the URL with the formatted country name and the API key
+  
   url <- 'http://api.airvisual.com/v2/city?city='
   str_state <- '&state='
   str_country <- '&country='
   str_key <- '&key=b94cdf68-3b7b-4808-9012-ffb6359d7690'
   url <- paste0(url, custom_city, str_state, custom_state, str_country, custom_country, str_key)
   
-  # Make an HTTP GET request to the API
+  
   response <- GET(url)
   results <- content(response, encoding = "UTF-8")$data
   return(results)
 }
 ```
 
+- Get current weather Return the most recent weather string by given
+  state, city, and country
 
-* __Get current weather__
-I've created a function to decode weather data, as it is initially encoded in a weather code format. This function will make the weather information more readable and understandable.
-
-```{r}
+``` r
 get_weather <- function(city="Los Angeles", state="California", country="USA"){
 
   ## replace " " to "%20", which is a URL-encoded representation of a space character.
@@ -372,34 +327,108 @@ get_weather <- function(city="Los Angeles", state="California", country="USA"){
 }
 ```
 
-
 # Exploratory Data Analysis
 
-Now, we can utilize the functions created previously to address the specific questions that we're interested in:
-1. aaa
-2. bbb
-3. ccc
+study the weather and temperature in north carolina state
 
-I will use Raleigh city as a case study for illustration. 
-
-```{r}
-# Check city list in NC 
+``` r
 city_list <- get_city(country="USA", state="North Carolina")
-table(city_list)
+city_list
 ```
 
-Select a few cities near Raleigh for the purpose of comparison.
+    ##            country
+    ## 1        Albemarle
+    ## 2             Apex
+    ## 3        Asheville
+    ## 4         Beaufort
+    ## 5           Bethel
+    ## 6     Blowing Rock
+    ## 7            Boone
+    ## 8          Brevard
+    ## 9      Bryson City
+    ## 10      Burlington
+    ## 11      Burnsville
+    ## 12          Camden
+    ## 13          Candor
+    ## 14        Carrboro
+    ## 15            Cary
+    ## 16     Chapel Hill
+    ## 17       Charlotte
+    ## 18        Cherokee
+    ## 19       Cornelius
+    ## 20       Cullowhee
+    ## 21          Durham
+    ## 22         Edenton
+    ## 23  Elizabeth City
+    ## 24    Fayetteville
+    ## 25       Flat Rock
+    ## 26        Franklin
+    ## 27   Fuquay-Varina
+    ## 28          Garner
+    ## 29          Gaston
+    ## 30       Goldsboro
+    ## 31          Gorman
+    ## 32      Greensboro
+    ## 33      Greenville
+    ## 34         Grifton
+    ## 35       Hampstead
+    ## 36      Harrisburg
+    ## 37      Hayesville
+    ## 38  Hendersonville
+    ## 39        Hertford
+    ## 40         Hickory
+    ## 41       Highlands
+    ## 42    Hillsborough
+    ## 43   Holly Springs
+    ## 44    Huntersville
+    ## 45      Knightdale
+    ## 46       Lexington
+    ## 47      Lillington
+    ## 48          Lowell
+    ## 49      Lowesville
+    ## 50          Mebane
+    ## 51         Midland
+    ## 52     Morrisville
+    ## 53     Mount Holly
+    ## 54    Murfreesboro
+    ## 55          Murphy
+    ## 56           Ogden
+    ## 57            Otto
+    ## 58       Pineville
+    ## 59       Pittsboro
+    ## 60   Pleasant Hill
+    ## 61       Princeton
+    ## 62         Raleigh
+    ## 63      Reidsville
+    ## 64        Rockwell
+    ## 65     Rocky Mount
+    ## 66      Rural Hall
+    ## 67       Salisbury
+    ## 68     Scotts Mill
+    ## 69      Siler City
+    ## 70      Smithfield
+    ## 71 Southern Shores
+    ## 72       Southport
+    ## 73          Sparta
+    ## 74     Spruce Pine
+    ## 75     Statesville
+    ## 76      Stoneville
+    ## 77         Tarboro
+    ## 78     Waynesville
+    ## 79     Weaverville
+    ## 80      Wilmington
+    ## 81   Winston-Salem
+    ## 82         Zebulon
 
-```{r}
+We want to see the relationship between coordinates and pollution
+
+``` r
 show_city <- c("Raleigh", "Cary", "Apex", "Durham", "Chapel Hill", "Garner")
 
 show_city_list_NC <- data.frame(country = show_city)
-
 ```
 
-
-
-```{r results = FALSE}
+``` r
 df <- data.frame()
 row_index <- 1
 
@@ -423,13 +452,11 @@ apply(show_city_list_NC, MARGIN = 1, FUN = function(x) {
   
   # Increment the row index for the next row
   row_index <<- row_index + 1
+  
 })
-
-
 ```
 
-
-```{r}
+``` r
 ggplot(df, aes(x = lat, y = lon, color = pol)) +
   geom_point() +
   geom_text(aes(label = city), vjust = 1, hjust = 1) + 
@@ -437,7 +464,9 @@ ggplot(df, aes(x = lat, y = lon, color = pol)) +
   scale_color_gradient(low = "green", high = "blue")
 ```
 
-```{r}
+![](Project2_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+
+``` r
 ggplot(df, aes(x = lat, y = lon, color = temp)) +
   geom_point() +
   geom_text(aes(label = city), vjust = 1, hjust = 1) + 
@@ -445,7 +474,9 @@ ggplot(df, aes(x = lat, y = lon, color = temp)) +
   scale_color_gradient(low = "green", high = "blue")
 ```
 
-```{r}
+![](Project2_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+
+``` r
 ggplot(df, aes(x = lat, y = lon, color = hu)) +
   geom_point() +
   geom_text(aes(label = city), vjust = 1, hjust = 1) + 
@@ -453,3 +484,4 @@ ggplot(df, aes(x = lat, y = lon, color = hu)) +
   scale_color_gradient(low = "green", high = "blue")
 ```
 
+![](Project2_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->

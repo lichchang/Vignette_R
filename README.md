@@ -1,4 +1,4 @@
-Project2
+Project
 ================
 LiChia Chang
 2023-10-07
@@ -52,9 +52,8 @@ simply add your key to “key=”. You can find detailed information
 regarding API key usage at this website:
 <https://www.iqair.com/dashboard/api>*
 
-- **Get all supported countries** First, to verify whether a country is
-  compatible with the AirVisual API, the get_country function retrieves
-  a list of countries that are supported by the AirVisual API.
+- **Get all supported countries** First, this function retrieves a list
+  of countries that are supported by the AirVisual API.
 
 ``` r
 get_country <- function(){
@@ -101,107 +100,141 @@ verify_country <- function(country="USA"){
 }
 ```
 
-- **Get all supported states inside a specified country**
+- **Get all supported states inside a specified country** This function
+  fetches a list of states that pertain to a particular country
+  supported by the AirVisual API.
 
 ``` r
 get_state <- function(country="USA"){
   
+  # Replace spaces with '%20' in the country name to format it for the URL
   custom_country <- gsub(" ", "%20", country)
   
+  # Build the URL with the formatted country name and the API key
   url <- "http://api.airvisual.com/v2/states?country="
   str_key <- "&key=b94cdf68-3b7b-4808-9012-ffb6359d7690"
   url <- paste0(url, custom_country, str_key)
   
-  
+  # Make an HTTP GET request to the API
   response <- GET(url)
+  
+  # Extract the 'data' part of the API response
   state_list <- content(response, encoding = "UTF-8")$data
   
-  ## Convert to data frame
+  # Convert the list of states to a data frame
   results <- data.frame(country = sapply(state_list, '[[', 'state'))
   return(results)
 }
 ```
 
-- Verify supported states in a country
-
-Verify if the state is in the supported list of specific country
+- **Verify supported states in a country** This function serves as a
+  convenient helper, enabling users to determine if their provided state
+  name is supported by AirVisual. The function returns boolean
+  (True/False) for verifing if a given state is supported by AirVisual
+  API. It’s important to note that a valid country must be provided to
+  verify state that belong to that specific country.
 
 ``` r
 verify_state <- function(country="USA", state="California"){
   
+  # Replace spaces with '%20' to format it for the URL
   custom_country <- gsub(" ", "%20", country)
   
+  # Build the URL with the formatted country name and the API key
   url <- "http://api.airvisual.com/v2/states?country="
   str_key <- "&key=b94cdf68-3b7b-4808-9012-ffb6359d7690"
   url <- paste0(url, custom_country, str_key)
   
-  
+  # Make an HTTP GET request to the API
   response <- GET(url)
+  
+  # Extract the 'data' part of the API response
   state_list <- content(response, encoding = "UTF-8")$data
   
+  # iterate through supported state list
   for (s in state_list) {
-     if (state == s) {
+    
+    # Return True if specified state is in the list 
+    if (state == s) {
        return(TRUE)
      }
   }
+  
+  # Return False if not found
   return(FALSE)
 }
 ```
 
-- Get all supported cities inside a specified country and state
+- **Get all supported cities inside a specified country and state** This
+  function extracts a collection of supported cities associated with a
+  particular country and state.
 
 ``` r
 get_city <- function(country="USA", state="California"){
 
+  # Replace spaces with '%20' to format it for the URL
   custom_state <- gsub(" ", "%20", state)
   custom_country <- gsub(" ", "%20", country)
   
+  # Build the URL with the formatted country name and the API key
   url <- "http://api.airvisual.com/v2/cities?state="
   str_country <- "&country="
   str_key <- "&key=b94cdf68-3b7b-4808-9012-ffb6359d7690"
   url <- paste0(url, custom_state, str_country, custom_country, str_key)
   
-  
+  # Make an HTTP GET request to the API
   response <- GET(url)
   city_list <- content(response, encoding = "UTF-8")$data
   
-  ## Convert to data frame
+  # Convert the list of cities to a data frame
   results <- data.frame(country = sapply(city_list, '[[', 'city'))
   return(results)
 }
 ```
 
-- Verify supported cities in a state
-
-Verify if the city is in the supported list of specific country and
-state
+- **Verify supported cities in a state** This function serves as a
+  convenient helper, enabling users to determine if their provided city
+  name is supported by AirVisual. The function returns boolean
+  (True/False) for verifing if a given city is supported by AirVisual
+  API. It’s important to note that a valid country and state must be
+  provided to verify city that belong to that specific country and
+  state.
 
 ``` r
 verify_city <- function(country="USA", state="California", city="Los Angeles"){
 
+  # Replace spaces with '%20' to format it for the URL
   custom_state <- gsub(" ", "%20", state)
   custom_country <- gsub(" ", "%20", country)
   
+  # Build the URL with the formatted country name and the API key
   url <- "http://api.airvisual.com/v2/cities?state="
   str_country <- "&country="
   str_key <- "&key=b94cdf68-3b7b-4808-9012-ffb6359d7690"
   url <- paste0(url, custom_state, str_country, custom_country, str_key)
   
-  
+  # Make an HTTP GET request to the API
   response <- GET(url)
   city_list <- content(response, encoding = "UTF-8")$data
   
+  # iterate through supported city list
   for (cty in city_list) {
+    
+    # Return True if specified city is in the list 
      if (city == cty) {
        return(TRUE)
      }
   }
+  # Return False if not found
   return(FALSE)
 }
 ```
 
-- Verify if the connection is sucessfully connected return status of
-  connection
+- **Verify if the connection is sucessfully connected** This function
+  assists in testing the successful establishment of a connection. The
+  output message will return “success” if the connection is established
+  successfully, and it will return an error message if the connection
+  encounters any issues.
 
 ``` r
 test_connection <- function(country="USA", state="California", city="Los Angeles") {
@@ -210,40 +243,49 @@ test_connection <- function(country="USA", state="California", city="Los Angeles
   custom_state <- gsub(" ", "%20", state)
   custom_country <- gsub(" ", "%20", country)
   
+  # Build the URL with the formatted country name and the API key
   url <- 'http://api.airvisual.com/v2/city?city='
   str_state <- '&state='
   str_country <- '&country='
   str_key <- '&key=b94cdf68-3b7b-4808-9012-ffb6359d7690'
   url <- paste0(url, custom_city, str_state, custom_state, str_country, custom_country, str_key)
   
-  
+  # Make an HTTP GET request to the API
   response <- GET(url)
   status <- content(response)$status
+  
+  # Return connection message
   return(status)
 }
 ```
 
-- Helper function to wrap up all the validation
+- **Helper function to wrap up all the validation** This function wrap
+  up all the helper functions mentioned earlier to provide comprehensive
+  end-to-end verification for a specified country, state, and city.
 
 ``` r
 wrap_validation <- function(country="USA", state="California", city="Los Angeles") {
   
+  # Execute the test_connection function to test connection
   status <- test_connection(country, state, city)
   if (status != "success") {
     msg <- "ERROR: Connection failed"
     stop(msg)
   }
   
+  # Execute the verify_country function to test country name
   if (!verify_country(country)) {
     msg <- "Not a valid country in supported list"
     stop(msg)
   }
   
+  # Execute the verify_state function to test state name
   if (!verify_state(country, state)) {
     msg <- paste0("Not a valid state in the supported list of country: ", country)
     stop(msg)
   }
   
+   # Execute the verify_city function to test city name
   if (!verify_city(country, state, city)) {
     msg <- paste0("Not a valid city in the supported list of country: ", country, " and state: ", state)
     stop(msg)
@@ -253,8 +295,16 @@ wrap_validation <- function(country="USA", state="California", city="Los Angeles
 }
 ```
 
-- Get data object Return the most recent data object by given state,
-  city, and country
+- **Get data object** This function extracts the data of interest, which
+  will be utilized for subsequent exploratory data analysis. A detailed
+  breakdown of the data structure is provided below: \*\* “ts”:
+  “2017-02-01T03:00:00.000Z” //timestamp \*\* “aqius”: 21, //AQI value
+  based on US EPA standard \*\* “aqicn”: 7, //AQI value based on China
+  MEP standard \*\* “tp”: 8, //temperature in Celsius \*\* tp_min”: 6,
+  //minimum temperature in Celsius \*\* “pr”: 976, //atmospheric
+  pressure in hPa \*\* “hu”: 100, //humidity % \*\* “ws”: 3, //wind
+  speed (m/s) \*\* “wd”: 313, //wind direction, as an angle of 360°
+  (N=0, E=90, S=180, W=270) \*\* “ic”: “10n” //weather icon code
 
 ``` r
 get_data <- function(city="Los Angeles", state="California", country="USA"){
@@ -264,22 +314,24 @@ get_data <- function(city="Los Angeles", state="California", country="USA"){
   custom_state <- gsub(" ", "%20", state)
   custom_country <- gsub(" ", "%20", country)
   
-  
+  # Build the URL with the formatted country name and the API key
   url <- 'http://api.airvisual.com/v2/city?city='
   str_state <- '&state='
   str_country <- '&country='
   str_key <- '&key=b94cdf68-3b7b-4808-9012-ffb6359d7690'
   url <- paste0(url, custom_city, str_state, custom_state, str_country, custom_country, str_key)
   
-  
+  # Make an HTTP GET request to the API
   response <- GET(url)
   results <- content(response, encoding = "UTF-8")$data
   return(results)
 }
 ```
 
-- Get current weather Return the most recent weather string by given
-  state, city, and country
+- **Get current weather** I’ve created a function to decode weather
+  data, as it is initially encoded in a weather code format. This
+  function will make the weather information more readable and
+  understandable.
 
 ``` r
 get_weather <- function(city="Los Angeles", state="California", country="USA"){
@@ -343,106 +395,40 @@ get_weather <- function(city="Los Angeles", state="California", country="USA"){
 
 # Exploratory Data Analysis
 
-study the weather and temperature in north carolina state
+Now, we can utilize the functions created previously to address the
+specific questions that we’re interested in: 1. aaa 2. bbb 3. ccc
+
+I will use Raleigh city as a case study for illustration.
 
 ``` r
+# Check city list in NC 
 city_list <- get_city(country="USA", state="North Carolina")
-city_list
+table(city_list)
 ```
 
-    ##            country
-    ## 1        Albemarle
-    ## 2             Apex
-    ## 3        Asheville
-    ## 4         Beaufort
-    ## 5           Bethel
-    ## 6     Blowing Rock
-    ## 7            Boone
-    ## 8          Brevard
-    ## 9      Bryson City
-    ## 10      Burlington
-    ## 11      Burnsville
-    ## 12          Camden
-    ## 13          Candor
-    ## 14        Carrboro
-    ## 15            Cary
-    ## 16     Chapel Hill
-    ## 17       Charlotte
-    ## 18        Cherokee
-    ## 19           Clyde
-    ## 20       Cornelius
-    ## 21       Cullowhee
-    ## 22          Denver
-    ## 23          Durham
-    ## 24         Edenton
-    ## 25  Elizabeth City
-    ## 26       Farmville
-    ## 27    Fayetteville
-    ## 28       Flat Rock
-    ## 29        Franklin
-    ## 30   Fuquay-Varina
-    ## 31          Garner
-    ## 32          Gaston
-    ## 33       Goldsboro
-    ## 34          Gorman
-    ## 35      Greensboro
-    ## 36      Greenville
-    ## 37         Grifton
-    ## 38       Hampstead
-    ## 39      Harrisburg
-    ## 40      Hayesville
-    ## 41  Hendersonville
-    ## 42        Hertford
-    ## 43         Hickory
-    ## 44       Highlands
-    ## 45    Hillsborough
-    ## 46   Holly Springs
-    ## 47      Hope Mills
-    ## 48    Huntersville
-    ## 49      Knightdale
-    ## 50       Lexington
-    ## 51      Lillington
-    ## 52          Lowell
-    ## 53      Lowesville
-    ## 54          Marvin
-    ## 55          Mebane
-    ## 56         Midland
-    ## 57     Morrisville
-    ## 58     Mount Holly
-    ## 59     Mount Olive
-    ## 60    Murfreesboro
-    ## 61          Murphy
-    ## 62         Norwood
-    ## 63           Ogden
-    ## 64            Otto
-    ## 65       Pineville
-    ## 66       Pittsboro
-    ## 67   Pleasant Hill
-    ## 68       Princeton
-    ## 69         Raleigh
-    ## 70      Reidsville
-    ## 71        Rockwell
-    ## 72     Rocky Mount
-    ## 73      Rural Hall
-    ## 74       Salisbury
-    ## 75     Scotts Mill
-    ## 76      Siler City
-    ## 77      Smithfield
-    ## 78 Southern Shores
-    ## 79       Southport
-    ## 80          Sparta
-    ## 81     Spruce Pine
-    ## 82     Statesville
-    ## 83      Stokesdale
-    ## 84      Stoneville
-    ## 85         Tarboro
-    ## 86     Waynesville
-    ## 87     Weaverville
-    ## 88      Wilmington
-    ## 89   Winston-Salem
-    ## 90         Zebulon
+    ## country
+    ##       Albemarle            Apex       Asheville        Beaufort          Bethel  Black Mountain           Boone         Brevard     Bryson City 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##          Camden          Candor        Carrboro            Cary     Chapel Hill       Charlotte           Clyde         Concord       Cornelius 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##       Cullowhee          Durham         Edenton  Elizabeth City    Fayetteville       Flat Rock        Franklin   Fuquay-Varina          Garner 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##          Gaston       Goldsboro          Gorman      Greensboro      Greenville         Grifton       Hampstead      Harrisburg      Hayesville 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##  Hendersonville        Hertford       Highlands    Hillsborough   Holly Springs      Hope Mills    Huntersville      Knightdale       Lexington 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##      Lillington          Lowell      Lowesville          Marvin          Mebane         Midland     Morrisville     Mount Holly    Murfreesboro 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##          Murphy           Ogden            Otto       Pineville       Pittsboro   Pleasant Hill       Princeton         Raleigh      Reidsville 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##        Rockwell     Rocky Mount      Rural Hall       Salisbury     Scotts Mill      Siler City      Smithfield Southern Shores       Southport 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##          Sparta     Spruce Pine     Statesville      Stoneville         Tarboro     Waynesville     Weaverville      Wilmington   Winston-Salem 
+    ##               1               1               1               1               1               1               1               1               1 
+    ##         Zebulon 
+    ##               1
 
-We want to see the relationship between coordinates and pollution
+Select a few cities near Raleigh for the purpose of comparison.
 
 ``` r
 show_city <- c("Raleigh", "Cary", "Apex", "Durham", "Chapel Hill", "Garner")
@@ -474,7 +460,6 @@ apply(show_city_list_NC, MARGIN = 1, FUN = function(x) {
   
   # Increment the row index for the next row
   row_index <<- row_index + 1
-  
 })
 ```
 
