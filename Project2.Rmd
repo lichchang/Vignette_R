@@ -461,4 +461,5 @@ ggplot(df, aes(x = lat, y = lon, color = hu)) +
   labs(x = "latitude", y = "longitude", color = "Humidity (%)") + 
   scale_color_gradient(low = "green", high = "blue")
 ```
+
 Conclusion: In the cities of North Carolina, we couldn't discover clear relationships between pollution and coordinates or humidity and coordinates. However, from the graphs, it's evident that Raleigh and Cary exhibit the highest pollution levels. This is likely due to their larger size compared to the other cities, potentially leading to increased pollution.
