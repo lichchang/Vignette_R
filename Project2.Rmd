@@ -453,7 +453,6 @@ ggplot(df, aes(x = lat, y = lon, color = pol)) +
   scale_color_gradient(low = "green", high = "blue")
 ```
 
-
 ```{r}
 ggplot(df, aes(x = lat, y = lon, color = hu)) +
   geom_point() +
