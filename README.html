@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="project2">Project2</h1>
+<p>LiChia Chang 2023-10-07</p>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#api-interaction-functions">API Interaction
+Functions</a></li>
+<li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a>
+<ul>
+<li><a href="#question-relationships-between-humidity-pollution-and-the-geographical-coordinates-of-cities-in-nc">Question:
+relationships between humidity, pollution, and the geographical
+coordinates of cities in NC</a></li>
+</ul></li>
+</ul>
+<h1 id="introduction">Introduction</h1>
+<p>This document is a vignette to show how to retrieve data from an API.
+To showcase this, I will create multiple functions for refining API
+endpoints and design helper functions to enhance the user-friendliness
+of the API. In the final section, I will employ these functions to
+extract data that I’m interested in and conduct exploratory data
+analysis.</p>
+<p>This article dives into the <a href="https://www.iqair.com/commercial-air-quality-monitors/api">AirVisual
+API</a>, which collects data from the largest network of ground-based
+sensors worldwide, providing the most accurate and reliable air quality
+information. Further details will be discussed in the subsequent
+sections.</p>
+<h1 id="requirements">Requirements</h1>
+<p>To interact with the AirVisual API, you will requrie several
+libraries. In the R environment console, you can install these libraries
+by using the following command:
+<code>install.packages(package_name)</code>. Make sure to replace
+package_name with the name of any library from the list below that you
+haven’t installed in your environment.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<h1 id="api-interaction-functions">API Interaction Functions</h1>
+<p>In this section, I will demonstrate how to establish contact with the
+AirVisual API and develop functions for specific purposes. I will
+provide separate explanations for each function, detailing their usage
+and intended purpose.</p>
+<p><em>Note: For this project, I am utilizing my own API key, which
+allows for up to 10,000 calls per month. If you wish to use your own API
+key, simply add your key to “key=”. You can find detailed information
+regarding API key usage at this website: <a href="https://www.iqair.com/dashboard/api">https://www.iqair.com/dashboard/api</a></em></p>
+<ul>
+<li><strong>Get all supported countries</strong> First, this function
+retrieves a list of countries that are supported by the AirVisual
+API.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>get_country <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="co"># Define the API URL with the provided API key for retrieving country data</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&#39;http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690&#39;</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  </span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="co"># Get api response and content</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  country_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  </span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  <span class="co"># Convert the list of countries to a data frame</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">country =</span> <span class="fu">sapply</span>(country_list, <span class="st">&#39;[[&#39;</span>, <span class="st">&#39;country&#39;</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>Verify whether the country is included in the list of
+supported countries</strong> This function serves as a convenient
+helper, enabling users to effortlessly determine if their provided
+country name is supported by AirVisual. The function returns boolean
+(True/False) for verifing if a given country is supported by AirVisual
+API.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>verify_country <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>){</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  </span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="co"># Define the API URL with the provided API key for retrieving country data</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&#39;http://api.airvisual.com/v2/countries?key=b94cdf68-3b7b-4808-9012-ffb6359d7690&#39;</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="co"># Get api response and content</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  country_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>  </span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>  <span class="co"># iterate through supported country list</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>  <span class="cf">for</span> (c <span class="cf">in</span> country_list) {</span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>    </span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>     <span class="co"># Return True if specified country is in the list</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>     <span class="cf">if</span> (country <span class="sc">==</span> c) {</span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>       <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>     }</span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>  }</span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a>  <span class="co"># Return False if not found</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>Get all supported states inside a specified country</strong>
+This function fetches a list of states that pertain to a particular
+country supported by the AirVisual API.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>get_state <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>){</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  </span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="co"># Replace spaces with &#39;%20&#39; in the country name to format it for the URL</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  custom_country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, country)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  </span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  <span class="co"># Build the URL with the formatted country name and the API key</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&quot;http://api.airvisual.com/v2/states?country=&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  str_key <span class="ot">&lt;-</span> <span class="st">&quot;&amp;key=b94cdf68-3b7b-4808-9012-ffb6359d7690&quot;</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, custom_country, str_key)</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>  </span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>  <span class="co"># Make an HTTP GET request to the API</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>  </span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>  <span class="co"># Extract the &#39;data&#39; part of the API response</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>  state_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>  </span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>  <span class="co"># Convert the list of states to a data frame</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">country =</span> <span class="fu">sapply</span>(state_list, <span class="st">&#39;[[&#39;</span>, <span class="st">&#39;state&#39;</span>))</span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>Verify supported states in a country</strong> This function
+serves as a convenient helper, enabling users to determine if their
+provided state name is supported by AirVisual. The function returns
+boolean (True/False) for verifing if a given state is supported by
+AirVisual API. It’s important to note that a valid country must be
+provided to verify state that belong to that specific country.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>verify_state <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>, <span class="at">state=</span><span class="st">&quot;California&quot;</span>){</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  </span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="co"># Replace spaces with &#39;%20&#39; to format it for the URL</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  custom_country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, country)</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  </span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="co"># Build the URL with the formatted country name and the API key</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&quot;http://api.airvisual.com/v2/states?country=&quot;</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>  str_key <span class="ot">&lt;-</span> <span class="st">&quot;&amp;key=b94cdf68-3b7b-4808-9012-ffb6359d7690&quot;</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, custom_country, str_key)</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>  <span class="co"># Make an HTTP GET request to the API</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>  </span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>  <span class="co"># Extract the &#39;data&#39; part of the API response</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a>  state_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>  </span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>  <span class="co"># iterate through supported state list</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a>  <span class="cf">for</span> (s <span class="cf">in</span> state_list) {</span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>    </span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>    <span class="co"># Return True if specified state is in the list </span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>    <span class="cf">if</span> (state <span class="sc">==</span> s) {</span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a>       <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a>     }</span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a>  }</span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a>  </span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a>  <span class="co"># Return False if not found</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>Get all supported cities inside a specified country and
+state</strong> This function extracts a collection of supported cities
+associated with a particular country and state.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>get_city <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>, <span class="at">state=</span><span class="st">&quot;California&quot;</span>){</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="co"># Replace spaces with &#39;%20&#39; to format it for the URL</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  custom_state <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, state)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  custom_country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, country)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  </span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="co"># Build the URL with the formatted country name and the API key</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&quot;http://api.airvisual.com/v2/cities?state=&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  str_country <span class="ot">&lt;-</span> <span class="st">&quot;&amp;country=&quot;</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>  str_key <span class="ot">&lt;-</span> <span class="st">&quot;&amp;key=b94cdf68-3b7b-4808-9012-ffb6359d7690&quot;</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, custom_state, str_country, custom_country, str_key)</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  </span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>  <span class="co"># Make an HTTP GET request to the API</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>  city_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>  </span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>  <span class="co"># Convert the list of cities to a data frame</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">country =</span> <span class="fu">sapply</span>(city_list, <span class="st">&#39;[[&#39;</span>, <span class="st">&#39;city&#39;</span>))</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>Verify supported cities in a state</strong> This function
+serves as a convenient helper, enabling users to determine if their
+provided city name is supported by AirVisual. The function returns
+boolean (True/False) for verifing if a given city is supported by
+AirVisual API. It’s important to note that a valid country and state
+must be provided to verify city that belong to that specific country and
+state.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>verify_city <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>, <span class="at">state=</span><span class="st">&quot;California&quot;</span>, <span class="at">city=</span><span class="st">&quot;Los Angeles&quot;</span>){</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="co"># Replace spaces with &#39;%20&#39; to format it for the URL</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  custom_state <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, state)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  custom_country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, country)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  </span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="co"># Build the URL with the formatted country name and the API key</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&quot;http://api.airvisual.com/v2/cities?state=&quot;</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  str_country <span class="ot">&lt;-</span> <span class="st">&quot;&amp;country=&quot;</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>  str_key <span class="ot">&lt;-</span> <span class="st">&quot;&amp;key=b94cdf68-3b7b-4808-9012-ffb6359d7690&quot;</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, custom_state, str_country, custom_country, str_key)</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>  </span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>  <span class="co"># Make an HTTP GET request to the API</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a>  city_list <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a>  </span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a>  <span class="co"># iterate through supported city list</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a>  <span class="cf">for</span> (cty <span class="cf">in</span> city_list) {</span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a>    </span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a>    <span class="co"># Return True if specified city is in the list </span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a>     <span class="cf">if</span> (city <span class="sc">==</span> cty) {</span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a>       <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a>     }</span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a>  }</span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a>  <span class="co"># Return False if not found</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>Verify if the connection is sucessfully connected</strong>
+This function assists in testing the successful establishment of a
+connection. The output message will return “success” if the connection
+is established successfully, and it will return an error message if the
+connection encounters any issues.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>test_connection <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>, <span class="at">state=</span><span class="st">&quot;California&quot;</span>, <span class="at">city=</span><span class="st">&quot;Los Angeles&quot;</span>) {</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="do">## replace &quot; &quot; to &quot;%20&quot;, which is a URL-encoded representation of a space character.</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  custom_city <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, city)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  custom_state <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, state)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  custom_country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, country)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  </span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="co"># Build the URL with the formatted country name and the API key</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&#39;http://api.airvisual.com/v2/city?city=&#39;</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>  str_state <span class="ot">&lt;-</span> <span class="st">&#39;&amp;state=&#39;</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  str_country <span class="ot">&lt;-</span> <span class="st">&#39;&amp;country=&#39;</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  str_key <span class="ot">&lt;-</span> <span class="st">&#39;&amp;key=b94cdf68-3b7b-4808-9012-ffb6359d7690&#39;</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, custom_city, str_state, custom_state, str_country, custom_country, str_key)</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>  </span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>  <span class="co"># Make an HTTP GET request to the API</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>  status <span class="ot">&lt;-</span> <span class="fu">content</span>(response)<span class="sc">$</span>status</span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>  </span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>  <span class="co"># Return connection message</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>  <span class="fu">return</span>(status)</span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>Helper function to wrap up all the validation</strong> This
+function wrap up all the helper functions mentioned earlier to provide
+comprehensive end-to-end verification for a specified country, state,
+and city.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>wrap_validation <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>, <span class="at">state=</span><span class="st">&quot;California&quot;</span>, <span class="at">city=</span><span class="st">&quot;Los Angeles&quot;</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  </span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="co"># Execute the test_connection function to test connection</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  status <span class="ot">&lt;-</span> <span class="fu">test_connection</span>(country, state, city)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="cf">if</span> (status <span class="sc">!=</span> <span class="st">&quot;success&quot;</span>) {</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>    msg <span class="ot">&lt;-</span> <span class="st">&quot;ERROR: Connection failed&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>    <span class="fu">stop</span>(msg)</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  }</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  </span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>  <span class="co"># Execute the verify_country function to test country name</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">verify_country</span>(country)) {</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>    msg <span class="ot">&lt;-</span> <span class="st">&quot;Not a valid country in supported list&quot;</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>    <span class="fu">stop</span>(msg)</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>  }</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>  </span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>  <span class="co"># Execute the verify_state function to test state name</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">verify_state</span>(country, state)) {</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>    msg <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Not a valid state in the supported list of country: &quot;</span>, country)</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>    <span class="fu">stop</span>(msg)</span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>  }</span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a>  </span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a>   <span class="co"># Execute the verify_city function to test city name</span></span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">verify_city</span>(country, state, city)) {</span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a>    msg <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Not a valid city in the supported list of country: &quot;</span>, country, <span class="st">&quot; and state: &quot;</span>, state)</span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a>    <span class="fu">stop</span>(msg)</span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a>  }</span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a>  </span>
+<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Everything works well&quot;</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><p><strong>Get data object</strong> This function extracts the data
+of interest, which will be utilized for subsequent exploratory data
+analysis. A detailed breakdown of the data structure is provided
+below:</p></li>
+<li><p><code>ts</code>: “2017-02-01T03:00:00.000Z” //timestamp</p></li>
+<li><p><code>aqius</code>: 21, //AQI value based on US EPA
+standard</p></li>
+<li><p><code>aqicn</code>: 7, //AQI value based on China MEP
+standard</p></li>
+<li><p><code>tp</code>: 8, //temperature in Celsius</p></li>
+<li><p><code>tp_min</code>: 6, //minimum temperature in Celsius</p></li>
+<li><p><code>pr</code>: 976, //atmospheric pressure in hPa</p></li>
+<li><p><code>hu</code>: 100, //humidity %</p></li>
+<li><p><code>ws</code>: 3, //wind speed (m/s)</p></li>
+<li><p><code>wd</code>: 313, //wind direction, as an angle of 360° (N=0,
+E=90, S=180, W=270)</p></li>
+<li><p><code>ic</code>: “10n” //weather icon code</p></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">city=</span><span class="st">&quot;Los Angeles&quot;</span>, <span class="at">state=</span><span class="st">&quot;California&quot;</span>, <span class="at">country=</span><span class="st">&quot;USA&quot;</span>){</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="do">## replace &quot; &quot; to &quot;%20&quot;, which is a URL-encoded representation of a space character.</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  custom_city <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, city)</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  custom_state <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, state)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  custom_country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, country)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  </span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="co"># Build the URL with the formatted country name and the API key</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&#39;http://api.airvisual.com/v2/city?city=&#39;</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>  str_state <span class="ot">&lt;-</span> <span class="st">&#39;&amp;state=&#39;</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>  str_country <span class="ot">&lt;-</span> <span class="st">&#39;&amp;country=&#39;</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>  str_key <span class="ot">&lt;-</span> <span class="st">&#39;&amp;key=b94cdf68-3b7b-4808-9012-ffb6359d7690&#39;</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, custom_city, str_state, custom_state, str_country, custom_country, str_key)</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>  </span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>  <span class="co"># Make an HTTP GET request to the API</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data</span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>Get current weather</strong> I’ve created a function to
+decode weather data, as it is initially encoded in a weather code
+format. This function will make the weather information more readable
+and understandable.</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>get_weather <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">city=</span><span class="st">&quot;Los Angeles&quot;</span>, <span class="at">state=</span><span class="st">&quot;California&quot;</span>, <span class="at">country=</span><span class="st">&quot;USA&quot;</span>){</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="do">## replace &quot; &quot; to &quot;%20&quot;, which is a URL-encoded representation of a space character.</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  custom_city <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, city)</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  custom_state <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, state)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  custom_country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;%20&quot;</span>, country)</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  </span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  </span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="st">&#39;http://api.airvisual.com/v2/city?city=&#39;</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  str_state <span class="ot">&lt;-</span> <span class="st">&#39;&amp;state=&#39;</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  str_country <span class="ot">&lt;-</span> <span class="st">&#39;&amp;country=&#39;</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>  str_key <span class="ot">&lt;-</span> <span class="st">&#39;&amp;key=b94cdf68-3b7b-4808-9012-ffb6359d7690&#39;</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, custom_city, str_state, custom_state, str_country, custom_country, str_key)</span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>  </span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>  </span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>  ic <span class="ot">&lt;-</span> <span class="fu">content</span>(response, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)<span class="sc">$</span>data<span class="sc">$</span>current<span class="sc">$</span>weather<span class="sc">$</span>ic</span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a>  </span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;01d&quot;</span>) {</span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;clear sky (day)&quot;</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a>  }</span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;01n&quot;</span>) {</span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;clear sky (night)&quot;</span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a>  }</span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;02d&quot;</span>) {</span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;few clouds (day)&quot;</span></span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a>  }</span>
+<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;02n&quot;</span>) {</span>
+<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;few clouds (night)&quot;</span></span>
+<span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a>  }</span>
+<span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;03d&quot;</span>) {</span>
+<span id="cb11-32"><a href="#cb11-32" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;scattered clouds&quot;</span></span>
+<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a>  }</span>
+<span id="cb11-34"><a href="#cb11-34" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;04d&quot;</span>) {</span>
+<span id="cb11-35"><a href="#cb11-35" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;broken clouds&quot;</span></span>
+<span id="cb11-36"><a href="#cb11-36" tabindex="-1"></a>  }</span>
+<span id="cb11-37"><a href="#cb11-37" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;09d&quot;</span>) {</span>
+<span id="cb11-38"><a href="#cb11-38" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;shower rain&quot;</span></span>
+<span id="cb11-39"><a href="#cb11-39" tabindex="-1"></a>  }</span>
+<span id="cb11-40"><a href="#cb11-40" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;10d&quot;</span>) {</span>
+<span id="cb11-41"><a href="#cb11-41" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;rain (day time)&quot;</span></span>
+<span id="cb11-42"><a href="#cb11-42" tabindex="-1"></a>  }</span>
+<span id="cb11-43"><a href="#cb11-43" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;10n&quot;</span>) {</span>
+<span id="cb11-44"><a href="#cb11-44" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;rain (night time)&quot;</span></span>
+<span id="cb11-45"><a href="#cb11-45" tabindex="-1"></a>  }</span>
+<span id="cb11-46"><a href="#cb11-46" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;11d&quot;</span>) {</span>
+<span id="cb11-47"><a href="#cb11-47" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;thunderstorm&quot;</span></span>
+<span id="cb11-48"><a href="#cb11-48" tabindex="-1"></a>  }</span>
+<span id="cb11-49"><a href="#cb11-49" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;13d&quot;</span>) {</span>
+<span id="cb11-50"><a href="#cb11-50" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;snow&quot;</span></span>
+<span id="cb11-51"><a href="#cb11-51" tabindex="-1"></a>  }</span>
+<span id="cb11-52"><a href="#cb11-52" tabindex="-1"></a>  <span class="cf">if</span> (ic <span class="sc">==</span> <span class="st">&quot;50d&quot;</span>) {</span>
+<span id="cb11-53"><a href="#cb11-53" tabindex="-1"></a>    weather <span class="ot">&lt;-</span> <span class="st">&quot;mist&quot;</span></span>
+<span id="cb11-54"><a href="#cb11-54" tabindex="-1"></a>  }</span>
+<span id="cb11-55"><a href="#cb11-55" tabindex="-1"></a>  </span>
+<span id="cb11-56"><a href="#cb11-56" tabindex="-1"></a>  <span class="fu">return</span>(weather)</span>
+<span id="cb11-57"><a href="#cb11-57" tabindex="-1"></a>}</span></code></pre></div>
+<h1 id="exploratory-data-analysis">Exploratory Data Analysis</h1>
+<p>Now, we can utilize the functions created previously to address the
+specific questions that we’re interested in:</p>
+<h2 id="question-relationships-between-humidity-pollution-and-the-geographical-coordinates-of-cities-in-nc">Question:
+relationships between humidity, pollution, and the geographical
+coordinates of cities in NC</h2>
+<p>I will use North Carolina state as a case study for illustration.
+Initially, we need to test if we can successfully establish a connection
+to the AirVisual API. Afterward, we extract the most recent weather data
+using the functions we’ve created previously. Once we’ve obtained data
+from the API, we can begin addressing the question. Here is an example
+of Raleigh.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Test connection</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">wrap_validation</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>, <span class="at">state=</span><span class="st">&quot;North Carolina&quot;</span>, <span class="at">city=</span><span class="st">&quot;Raleigh&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Everything works well&quot;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>data_Raleigh <span class="ot">&lt;-</span> <span class="fu">get_data</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>, <span class="at">state=</span><span class="st">&quot;North Carolina&quot;</span>, <span class="at">city=</span><span class="st">&quot;Raleigh&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>data_Raleigh</span></code></pre></div>
+<pre><code>## $city
+## [1] &quot;Raleigh&quot;
+## 
+## $state
+## [1] &quot;North Carolina&quot;
+## 
+## $country
+## [1] &quot;USA&quot;
+## 
+## $location
+## $location$type
+## [1] &quot;Point&quot;
+## 
+## $location$coordinates
+## $location$coordinates[[1]]
+## [1] -78.5742
+## 
+## $location$coordinates[[2]]
+## [1] 35.8561
+## 
+## 
+## 
+## $current
+## $current$pollution
+## $current$pollution$ts
+## [1] &quot;2023-10-15T15:00:00.000Z&quot;
+## 
+## $current$pollution$aqius
+## [1] 5
+## 
+## $current$pollution$mainus
+## [1] &quot;p2&quot;
+## 
+## $current$pollution$aqicn
+## [1] 2
+## 
+## $current$pollution$maincn
+## [1] &quot;p2&quot;
+## 
+## 
+## $current$weather
+## $current$weather$ts
+## [1] &quot;2023-10-15T15:00:00.000Z&quot;
+## 
+## $current$weather$tp
+## [1] 14
+## 
+## $current$weather$pr
+## [1] 1006
+## 
+## $current$weather$hu
+## [1] 77
+## 
+## $current$weather$ws
+## [1] 3.6
+## 
+## $current$weather$wd
+## [1] 20
+## 
+## $current$weather$ic
+## [1] &quot;04d&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Pause execution for 20 seconds to avoid overloading the API</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="dv">20</span>)</span></code></pre></div>
+<p>Select a few cities near Raleigh for the purpose of comparison.
+Create a data frame to store the weather data for these cities.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Raleigh&quot;</span>, <span class="st">&quot;Cary&quot;</span>, <span class="st">&quot;Apex&quot;</span>, <span class="st">&quot;Durham&quot;</span>, <span class="st">&quot;Chapel Hill&quot;</span>, <span class="st">&quot;Garner&quot;</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>cities_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">country =</span> cities)</span></code></pre></div>
+<p>Save the data for each city from the <code>cities_data</code>
+variable using the API functions for extraction.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Create an empty data frame to store the city data</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># Initialize the row index</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>row_index <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># Apply a function to each city in the show_city_list_NC variable</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">apply</span>(cities_data, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>  </span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>  <span class="co"># Pause execution for 20 seconds to avoid overloading the API</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">40</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>  </span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a>  <span class="co"># Retrieve data for a city in North Carolina from the AirVisual API</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a>  city_data <span class="ot">&lt;-</span> <span class="fu">get_data</span>(<span class="at">country=</span><span class="st">&quot;USA&quot;</span>, <span class="at">state=</span><span class="st">&quot;North Carolina&quot;</span>, <span class="at">city =</span> x)</span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a>  </span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a>  <span class="co"># Extract latitude and longitude coordinates</span></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a>  latitude <span class="ot">&lt;-</span> city_data<span class="sc">$</span>location<span class="sc">$</span>coordinates[[<span class="dv">1</span>]]</span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a>  longitude <span class="ot">&lt;-</span> city_data<span class="sc">$</span>location<span class="sc">$</span>coordinates[[<span class="dv">2</span>]]</span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a>  </span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a>  <span class="co"># Extract pollution and temperature data</span></span>
+<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a>  pollution <span class="ot">&lt;-</span> city_data<span class="sc">$</span>current<span class="sc">$</span>pollution<span class="sc">$</span>aqius</span>
+<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a>  temperature <span class="ot">&lt;-</span> city_data<span class="sc">$</span>current<span class="sc">$</span>weather<span class="sc">$</span>tp</span>
+<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a>  humidity <span class="ot">&lt;-</span> city_data<span class="sc">$</span>current<span class="sc">$</span>weather<span class="sc">$</span>hu</span>
+<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a>  </span>
+<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a>  <span class="co"># Create a temporary data frame for the current city</span></span>
+<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">city =</span> x, <span class="at">lat =</span> latitude, <span class="at">lon =</span> longitude, <span class="at">pol =</span> pollution, <span class="at">temp =</span> temperature, <span class="at">hu =</span> humidity)</span>
+<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a>  </span>
+<span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a>   <span class="co"># Set the row index as the row names of tmp</span></span>
+<span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a>  <span class="fu">rownames</span>(tmp) <span class="ot">&lt;-</span> row_index</span>
+<span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a>  </span>
+<span id="cb18-31"><a href="#cb18-31" tabindex="-1"></a>  <span class="co"># Add tmp as a new row to the global df data frame</span></span>
+<span id="cb18-32"><a href="#cb18-32" tabindex="-1"></a>  df <span class="ot">&lt;&lt;-</span> <span class="fu">rbind</span>(df, tmp)  <span class="co"># Use &#39;&lt;&lt;-&#39; to assign to the global variable</span></span>
+<span id="cb18-33"><a href="#cb18-33" tabindex="-1"></a>  </span>
+<span id="cb18-34"><a href="#cb18-34" tabindex="-1"></a>  <span class="co"># Increment the row index for the next row</span></span>
+<span id="cb18-35"><a href="#cb18-35" tabindex="-1"></a>  row_index <span class="ot">&lt;&lt;-</span> row_index <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb18-36"><a href="#cb18-36" tabindex="-1"></a>})</span></code></pre></div>
+<p>We can now employ data visualization techniques to address the
+question.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> lat, <span class="at">y =</span> lon, <span class="at">color =</span> pol)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> city), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;latitude&quot;</span>, <span class="at">y =</span> <span class="st">&quot;longitude&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Pollution (AQI)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> lat, <span class="at">y =</span> lon, <span class="at">color =</span> hu)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> city), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;latitude&quot;</span>, <span class="at">y =</span> <span class="st">&quot;longitude&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Humidity (%)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- -->
+Conclusion: In the cities of North Carolina, we couldn’t discover clear
+relationships between pollution and coordinates or humidity and
+coordinates. However, from the graphs, it’s evident that Raleigh and
+Cary exhibit the highest pollution levels. This is likely due to their
+larger size compared to the other cities, potentially leading to
+increased pollution.</p>
+
+</body>
+</html>

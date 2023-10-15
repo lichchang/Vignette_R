@@ -1,4 +1,4 @@
-Project
+Project2
 ================
 LiChia Chang
 2023-10-07
@@ -564,7 +564,7 @@ ggplot(df, aes(x = lat, y = lon, color = pol)) +
   scale_color_gradient(low = "green", high = "blue")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-45-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 ``` r
 ggplot(df, aes(x = lat, y = lon, color = hu)) +
@@ -574,7 +574,7 @@ ggplot(df, aes(x = lat, y = lon, color = hu)) +
   scale_color_gradient(low = "green", high = "blue")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-46-1.png)<!-- --> Conclusion:
+![](README_files/figure-gfm/unnamed-chunk-16-1.png)<!-- --> Conclusion:
 In the cities of North Carolina, we couldn’t discover clear
 relationships between pollution and coordinates or humidity and
 coordinates. However, from the graphs, it’s evident that Raleigh and
