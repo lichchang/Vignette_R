@@ -274,16 +274,17 @@ wrap_validation <- function(country="USA", state="California", city="Los Angeles
 
 * __Get data object__
 This function extracts the data of interest, which will be utilized for subsequent exploratory data analysis. A detailed breakdown of the data structure is provided below:
- ** "ts": "2017-02-01T03:00:00.000Z"   //timestamp
- ** "aqius": 21,                       //AQI value based on US EPA standard
- ** "aqicn": 7,                        //AQI value based on China MEP standard
- ** "tp": 8,                           //temperature in Celsius
- ** tp_min": 6,                        //minimum temperature in Celsius
- ** "pr": 976,                         //atmospheric pressure in hPa
- ** "hu": 100,                         //humidity %
- ** "ws": 3,                           //wind speed (m/s)
- ** "wd": 313,                         //wind direction, as an angle of 360° (N=0, E=90, S=180, W=270)
- ** "ic": "10n"                        //weather icon code
+
+* `ts`: "2017-02-01T03:00:00.000Z"   //timestamp
+* `aqius`: 21,                       //AQI value based on US EPA standard
+* `aqicn`: 7,                        //AQI value based on China MEP standard
+* `tp`: 8,                           //temperature in Celsius
+* `tp_min`: 6,                        //minimum temperature in Celsius
+* `pr`: 976,                         //atmospheric pressure in hPa
+* `hu`: 100,                         //humidity %
+* `ws`: 3,                           //wind speed (m/s)
+* `wd`: 313,                         //wind direction, as an angle of 360° (N=0, E=90, S=180, W=270)
+* `ic`: "10n"                        //weather icon code
 
 
 ```{r}
@@ -376,43 +377,58 @@ get_weather <- function(city="Los Angeles", state="California", country="USA"){
 # Exploratory Data Analysis
 
 Now, we can utilize the functions created previously to address the specific questions that we're interested in:
-1. aaa
-2. bbb
-3. ccc
 
-I will use Raleigh city as a case study for illustration. 
 
+## Question: relationships between humidity, pollution, and the geographical coordinates of cities in NC
+
+I will use North Carolina state as a case study for illustration. Initially, we need to test if we can successfully establish a connection to the AirVisual API. Afterward, we extract the most recent weather data using the functions we've created previously. Once we've obtained data from the API, we can begin addressing the question. Here is an example of Raleigh.
 ```{r}
-# Check city list in NC 
-city_list <- get_city(country="USA", state="North Carolina")
-table(city_list)
+# Test connection
+wrap_validation(country="USA", state="North Carolina", city="Raleigh")
+
+data_Raleigh <- get_data(country="USA", state="North Carolina", city="Raleigh")
+data_Raleigh
+
+# Pause execution for 20 seconds to avoid overloading the API
+Sys.sleep(20)
 ```
 
-Select a few cities near Raleigh for the purpose of comparison.
+Select a few cities near Raleigh for the purpose of comparison. Create a data frame to store the weather data for these cities.
 
 ```{r}
-show_city <- c("Raleigh", "Cary", "Apex", "Durham", "Chapel Hill", "Garner")
+cities <- c("Raleigh", "Cary", "Apex", "Durham", "Chapel Hill", "Garner")
 
-show_city_list_NC <- data.frame(country = show_city)
-
+cities_data <- data.frame(country = cities)
 ```
 
 
-
+Save the data for each city from the `cities_data` variable using the API functions for extraction.
 ```{r results = FALSE}
+# Create an empty data frame to store the city data
 df <- data.frame()
+
+# Initialize the row index
 row_index <- 1
 
-apply(show_city_list_NC, MARGIN = 1, FUN = function(x) {
-  Sys.sleep(20)
+# Apply a function to each city in the show_city_list_NC variable
+apply(cities_data, MARGIN = 1, FUN = function(x) {
   
+  # Pause execution for 20 seconds to avoid overloading the API
+  Sys.sleep(40)
+  
+  # Retrieve data for a city in North Carolina from the AirVisual API
   city_data <- get_data(country="USA", state="North Carolina", city = x)
+  
+  # Extract latitude and longitude coordinates
   latitude <- city_data$location$coordinates[[1]]
   longitude <- city_data$location$coordinates[[2]]
+  
+  # Extract pollution and temperature data
   pollution <- city_data$current$pollution$aqius
   temperature <- city_data$current$weather$tp
   humidity <- city_data$current$weather$hu
   
+  # Create a temporary data frame for the current city
   tmp <- data.frame(city = x, lat = latitude, lon = longitude, pol = pollution, temp = temperature, hu = humidity)
   
    # Set the row index as the row names of tmp
@@ -424,32 +440,25 @@ apply(show_city_list_NC, MARGIN = 1, FUN = function(x) {
   # Increment the row index for the next row
   row_index <<- row_index + 1
 })
-
-
 ```
 
+
+We can now employ data visualization techniques to address the question.
 
 ```{r}
 ggplot(df, aes(x = lat, y = lon, color = pol)) +
   geom_point() +
   geom_text(aes(label = city), vjust = 1, hjust = 1) + 
-  labs(x = "latitude", y = "longitude", color = "pollution (AQI)") + 
+  labs(x = "latitude", y = "longitude", color = "Pollution (AQI)") + 
   scale_color_gradient(low = "green", high = "blue")
 ```
 
-```{r}
-ggplot(df, aes(x = lat, y = lon, color = temp)) +
-  geom_point() +
-  geom_text(aes(label = city), vjust = 1, hjust = 1) + 
-  labs(x = "latitude", y = "longitude", color = "temperature (Celsius)") + 
-  scale_color_gradient(low = "green", high = "blue")
-```
 
 ```{r}
 ggplot(df, aes(x = lat, y = lon, color = hu)) +
   geom_point() +
   geom_text(aes(label = city), vjust = 1, hjust = 1) + 
-  labs(x = "latitude", y = "longitude", color = "pollution (AQI)") + 
+  labs(x = "latitude", y = "longitude", color = "Humidity (%)") + 
   scale_color_gradient(low = "green", high = "blue")
 ```
-
+Conclusion: In the cities of North Carolina, we couldn't discover clear relationships between pollution and coordinates or humidity and coordinates. However, from the graphs, it's evident that Raleigh and Cary exhibit the highest pollution levels. This is likely due to their larger size compared to the other cities, potentially leading to increased pollution.

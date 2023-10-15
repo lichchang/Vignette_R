@@ -7,6 +7,9 @@ LiChia Chang
 - [Requirements](#requirements)
 - [API Interaction Functions](#api-interaction-functions)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
+  - [Question: relationships between humidity, pollution, and the
+    geographical coordinates of cities in
+    NC](#question-relationships-between-humidity-pollution-and-the-geographical-coordinates-of-cities-in-nc)
 
 # Introduction
 
@@ -297,14 +300,28 @@ wrap_validation <- function(country="USA", state="California", city="Los Angeles
 
 - **Get data object** This function extracts the data of interest, which
   will be utilized for subsequent exploratory data analysis. A detailed
-  breakdown of the data structure is provided below: \*\* “ts”:
-  “2017-02-01T03:00:00.000Z” //timestamp \*\* “aqius”: 21, //AQI value
-  based on US EPA standard \*\* “aqicn”: 7, //AQI value based on China
-  MEP standard \*\* “tp”: 8, //temperature in Celsius \*\* tp_min”: 6,
-  //minimum temperature in Celsius \*\* “pr”: 976, //atmospheric
-  pressure in hPa \*\* “hu”: 100, //humidity % \*\* “ws”: 3, //wind
-  speed (m/s) \*\* “wd”: 313, //wind direction, as an angle of 360°
-  (N=0, E=90, S=180, W=270) \*\* “ic”: “10n” //weather icon code
+  breakdown of the data structure is provided below:
+
+- `ts`: “2017-02-01T03:00:00.000Z” //timestamp
+
+- `aqius`: 21, //AQI value based on US EPA standard
+
+- `aqicn`: 7, //AQI value based on China MEP standard
+
+- `tp`: 8, //temperature in Celsius
+
+- `tp_min`: 6, //minimum temperature in Celsius
+
+- `pr`: 976, //atmospheric pressure in hPa
+
+- `hu`: 100, //humidity %
+
+- `ws`: 3, //wind speed (m/s)
+
+- `wd`: 313, //wind direction, as an angle of 360° (N=0, E=90, S=180,
+  W=270)
+
+- `ic`: “10n” //weather icon code
 
 ``` r
 get_data <- function(city="Los Angeles", state="California", country="USA"){
@@ -396,60 +413,134 @@ get_weather <- function(city="Los Angeles", state="California", country="USA"){
 # Exploratory Data Analysis
 
 Now, we can utilize the functions created previously to address the
-specific questions that we’re interested in: 1. aaa 2. bbb 3. ccc
+specific questions that we’re interested in:
 
-I will use Raleigh city as a case study for illustration.
+## Question: relationships between humidity, pollution, and the geographical coordinates of cities in NC
+
+I will use North Carolina state as a case study for illustration.
+Initially, we need to test if we can successfully establish a connection
+to the AirVisual API. Afterward, we extract the most recent weather data
+using the functions we’ve created previously. Once we’ve obtained data
+from the API, we can begin addressing the question. Here is an example
+of Raleigh.
 
 ``` r
-# Check city list in NC 
-city_list <- get_city(country="USA", state="North Carolina")
-table(city_list)
+# Test connection
+wrap_validation(country="USA", state="North Carolina", city="Raleigh")
 ```
 
-    ## country
-    ##       Albemarle            Apex       Asheville        Beaufort          Bethel  Black Mountain           Boone         Brevard     Bryson City 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##          Camden          Candor        Carrboro            Cary     Chapel Hill       Charlotte           Clyde         Concord       Cornelius 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##       Cullowhee          Durham         Edenton  Elizabeth City    Fayetteville       Flat Rock        Franklin   Fuquay-Varina          Garner 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##          Gaston       Goldsboro          Gorman      Greensboro      Greenville         Grifton       Hampstead      Harrisburg      Hayesville 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##  Hendersonville        Hertford       Highlands    Hillsborough   Holly Springs      Hope Mills    Huntersville      Knightdale       Lexington 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##      Lillington          Lowell      Lowesville          Marvin          Mebane         Midland     Morrisville     Mount Holly    Murfreesboro 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##          Murphy           Ogden            Otto       Pineville       Pittsboro   Pleasant Hill       Princeton         Raleigh      Reidsville 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##        Rockwell     Rocky Mount      Rural Hall       Salisbury     Scotts Mill      Siler City      Smithfield Southern Shores       Southport 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##          Sparta     Spruce Pine     Statesville      Stoneville         Tarboro     Waynesville     Weaverville      Wilmington   Winston-Salem 
-    ##               1               1               1               1               1               1               1               1               1 
-    ##         Zebulon 
-    ##               1
-
-Select a few cities near Raleigh for the purpose of comparison.
+    ## [1] "Everything works well"
 
 ``` r
-show_city <- c("Raleigh", "Cary", "Apex", "Durham", "Chapel Hill", "Garner")
-
-show_city_list_NC <- data.frame(country = show_city)
+data_Raleigh <- get_data(country="USA", state="North Carolina", city="Raleigh")
+data_Raleigh
 ```
 
+    ## $city
+    ## [1] "Raleigh"
+    ## 
+    ## $state
+    ## [1] "North Carolina"
+    ## 
+    ## $country
+    ## [1] "USA"
+    ## 
+    ## $location
+    ## $location$type
+    ## [1] "Point"
+    ## 
+    ## $location$coordinates
+    ## $location$coordinates[[1]]
+    ## [1] -78.5742
+    ## 
+    ## $location$coordinates[[2]]
+    ## [1] 35.8561
+    ## 
+    ## 
+    ## 
+    ## $current
+    ## $current$pollution
+    ## $current$pollution$ts
+    ## [1] "2023-10-15T15:00:00.000Z"
+    ## 
+    ## $current$pollution$aqius
+    ## [1] 5
+    ## 
+    ## $current$pollution$mainus
+    ## [1] "p2"
+    ## 
+    ## $current$pollution$aqicn
+    ## [1] 2
+    ## 
+    ## $current$pollution$maincn
+    ## [1] "p2"
+    ## 
+    ## 
+    ## $current$weather
+    ## $current$weather$ts
+    ## [1] "2023-10-15T15:00:00.000Z"
+    ## 
+    ## $current$weather$tp
+    ## [1] 14
+    ## 
+    ## $current$weather$pr
+    ## [1] 1006
+    ## 
+    ## $current$weather$hu
+    ## [1] 77
+    ## 
+    ## $current$weather$ws
+    ## [1] 3.6
+    ## 
+    ## $current$weather$wd
+    ## [1] 20
+    ## 
+    ## $current$weather$ic
+    ## [1] "04d"
+
 ``` r
+# Pause execution for 20 seconds to avoid overloading the API
+Sys.sleep(20)
+```
+
+Select a few cities near Raleigh for the purpose of comparison. Create a
+data frame to store the weather data for these cities.
+
+``` r
+cities <- c("Raleigh", "Cary", "Apex", "Durham", "Chapel Hill", "Garner")
+
+cities_data <- data.frame(country = cities)
+```
+
+Save the data for each city from the `cities_data` variable using the
+API functions for extraction.
+
+``` r
+# Create an empty data frame to store the city data
 df <- data.frame()
+
+# Initialize the row index
 row_index <- 1
 
-apply(show_city_list_NC, MARGIN = 1, FUN = function(x) {
-  Sys.sleep(20)
+# Apply a function to each city in the show_city_list_NC variable
+apply(cities_data, MARGIN = 1, FUN = function(x) {
   
+  # Pause execution for 20 seconds to avoid overloading the API
+  Sys.sleep(40)
+  
+  # Retrieve data for a city in North Carolina from the AirVisual API
   city_data <- get_data(country="USA", state="North Carolina", city = x)
+  
+  # Extract latitude and longitude coordinates
   latitude <- city_data$location$coordinates[[1]]
   longitude <- city_data$location$coordinates[[2]]
+  
+  # Extract pollution and temperature data
   pollution <- city_data$current$pollution$aqius
   temperature <- city_data$current$weather$tp
   humidity <- city_data$current$weather$hu
   
+  # Create a temporary data frame for the current city
   tmp <- data.frame(city = x, lat = latitude, lon = longitude, pol = pollution, temp = temperature, hu = humidity)
   
    # Set the row index as the row names of tmp
@@ -463,32 +554,30 @@ apply(show_city_list_NC, MARGIN = 1, FUN = function(x) {
 })
 ```
 
+We can now employ data visualization techniques to address the question.
+
 ``` r
 ggplot(df, aes(x = lat, y = lon, color = pol)) +
   geom_point() +
   geom_text(aes(label = city), vjust = 1, hjust = 1) + 
-  labs(x = "latitude", y = "longitude", color = "pollution (AQI)") + 
+  labs(x = "latitude", y = "longitude", color = "Pollution (AQI)") + 
   scale_color_gradient(low = "green", high = "blue")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
-
-``` r
-ggplot(df, aes(x = lat, y = lon, color = temp)) +
-  geom_point() +
-  geom_text(aes(label = city), vjust = 1, hjust = 1) + 
-  labs(x = "latitude", y = "longitude", color = "temperature (Celsius)") + 
-  scale_color_gradient(low = "green", high = "blue")
-```
-
-![](README_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-45-1.png)<!-- -->
 
 ``` r
 ggplot(df, aes(x = lat, y = lon, color = hu)) +
   geom_point() +
   geom_text(aes(label = city), vjust = 1, hjust = 1) + 
-  labs(x = "latitude", y = "longitude", color = "pollution (AQI)") + 
+  labs(x = "latitude", y = "longitude", color = "Humidity (%)") + 
   scale_color_gradient(low = "green", high = "blue")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-46-1.png)<!-- --> Conclusion:
+In the cities of North Carolina, we couldn’t discover clear
+relationships between pollution and coordinates or humidity and
+coordinates. However, from the graphs, it’s evident that Raleigh and
+Cary exhibit the highest pollution levels. This is likely due to their
+larger size compared to the other cities, potentially leading to
+increased pollution.
